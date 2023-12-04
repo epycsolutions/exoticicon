@@ -1,0 +1,9 @@
+# NodeJS
+node_modules
+yarn-error.log
+
+# OSX
+.DS_Sotre
+
+# Build
+lib
