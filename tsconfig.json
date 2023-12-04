@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "outDir": "lib",
+        "rootDir": "src",
+        "sourceMap": true,
+        "target": "ES6",
+        "types": ["node"]
+    },
+    "typeRoots": [
+        "node_modules/@types"
+    ],
+    "exclude": [
+        "node_modules",
+        "lib",
+        "src/**/__mocks__/*.ts",
+        "src/**/__tests__/*.ts"
+    ]
+}
