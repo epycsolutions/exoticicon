@@ -1,0 +1,8 @@
+# Generated libs
+lib
+
+# Template files
+*.hbs
+
+# Markdown files
+*.md
