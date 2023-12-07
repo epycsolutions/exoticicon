@@ -12,7 +12,7 @@ type SVGOptions = Omit<
 >
 
 interface JsonOptions {
-    ident?: number
+    indent?: number
 }
 
 interface TSOptions {
