@@ -26,7 +26,7 @@ export const ASSET_TYPES = { ...FontAssetType, ...OtherAssetType }
 
 export type AssetType = FontAssetType | OtherAssetType
 
-export interface GetIconOptions {
+export interface GetIconIdOptions {
     basename: string
     relativeDirPath: string
     absoluteFilePath: string
@@ -34,4 +34,4 @@ export interface GetIconOptions {
     index: number
 }
 
-export type GetIconIdFn = (options: GetIconOptions) => string
+export type GetIconIdFn = (options: GetIconIdOptions) => string
