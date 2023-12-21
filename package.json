@@ -25,7 +25,8 @@
     "license": "MIT",
     "scripts": {
         "test": "jest",
-        "build": "rimraf lib && tsc --projet ./tsconfig.json",
+        "test:complex": "jest --verbose",
+        "build": "rimraf lib && tsc --project ./tsconfig.json",
         "watch": "npm run build -- --watch",
         "typecheck": "tsc --noEmit --project tsconfig.test.json --noEmit",
         "lint": "prettier --check ."
@@ -38,7 +39,7 @@
     ],
     "prepublish": "build",
     "dependencies": {
-        "change-case": "5.2.0",
+        "change-case": "4.1.2",
         "cli-color": "2.0.3",
         "commander": "11.1.0",
         "glob": "8.0.3",
