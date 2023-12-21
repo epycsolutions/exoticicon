@@ -15,7 +15,7 @@ export enum OtherAssetType {
     TS = 'ts'
 }
 
-export const ASSET_TYPES_WITH_TEMPLATES = [
+export const ASSET_TYPES_WITH_TEMPLATE = [
     OtherAssetType.CSS,
     OtherAssetType.HTML,
     OtherAssetType.SCSS,

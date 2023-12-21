@@ -2,10 +2,10 @@ import Handlebars from 'handlebars'
 import { resolve, isAbsolute } from 'path'
 
 import { readFile } from './fs-async'
-import { getNextCodepoint } from './codepoints'
+import { getHexCodepoint } from './codepoints'
 
 export const TEMPLATE_HELPERS: Record<string, Function> = {
-    codepoint: getNextCodepoint
+    codepoint: getHexCodepoint
 }
 
 export type CompileOptions = {
@@ -20,7 +20,7 @@ export const renderTemplate = async (
     const absoluteTemplatePath = isAbsolute(templatePath)
         ? templatePath
         : resolve(process.cwd(), templatePath)
-    const template = await readFile(absoluteTemplatePath, 'utf8')
+    const template = await readFile(absoluteTemplatePath, 'utf-8')
 
     return Handlebars.compile(template)(context, {
         ...options,

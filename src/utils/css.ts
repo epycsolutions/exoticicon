@@ -29,10 +29,11 @@ export const renderSrcAttribute = (
     fontTypes
         .map((fontType) => {
             const { formatValue, getSuffix } = renderSrcOptions[fontType]
-            const hash = getHash(font.toString('utf8'))
+            const hash = getHash(font.toString('utf-8'))
             const suffix = getSuffix ? getSuffix(name) : ''
 
             return `url("${
                 fontsUrl || '.'
             }/${ name }.${ fontType }?${ hash }${ suffix }") format("${ formatValue }")`
         })
+        .join(',\n')

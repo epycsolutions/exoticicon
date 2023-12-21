@@ -32,5 +32,5 @@ export const getCodepoints = (
     return { ...predefined, ...out }
 }
 
-export const getNextCodepoint = (decimalCodepoint: number): string =>
+export const getHexCodepoint = (decimalCodepoint: number): string =>
     decimalCodepoint.toString(16)
