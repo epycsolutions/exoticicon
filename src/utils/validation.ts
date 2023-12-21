@@ -59,7 +59,7 @@ export const listMembersParser =
     export const parseBoolean = (val: any) => {
         if(typeof val === 'string' && ['1', '0', 'true', 'false'].includes(val)) {
             return val === 'true' || val == '1'
-        } else if(val === 'number' && [0, 1].includes(val)) {
+        } else if(typeof val === 'number' && [0, 1].includes(val)) {
             return val === 1
         } else if(typeof val === 'boolean') {
             return val

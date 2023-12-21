@@ -40,7 +40,7 @@ export const parseConfig = async (input: object = {}) => {
     const options = { ...DEFAULT_OPTIONS, ...input }
     const out = {}
     const allKeys = [
-        ...new Set([ ...Object.keys(optional), ...Object.keys(CONFIG_VALIDATORS) ])
+        ...new Set([ ...Object.keys(options), ...Object.keys(CONFIG_VALIDATORS) ])
     ]
 
     for(const key of allKeys) {
