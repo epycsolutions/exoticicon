@@ -8,7 +8,7 @@ import {
     AssetType,
     OtherAssetType,
     ASSET_TYPES,
-    ASSET_TYPES_WITH_TEMPLATES
+    ASSET_TYPES_WITH_TEMPLATE
 } from '../types/misc'
 import { AssetsMap } from '../utils/assets'
 import { FontGeneratorOptions } from '../types/generator'
@@ -25,7 +25,7 @@ export const getGeneratorOptions = (
         (assetType) => DEFAULT_OPTIONS.formatOptions[assetType] || {}
     ),
     templates: prefillOptions<OtherAssetType, string>(
-        ASSET_TYPES_WITH_TEMPLATES,
+        ASSET_TYPES_WITH_TEMPLATE,
         options.templates,
         (assetType) => join(TEMPLATES_DIR, `${ assetType }.hbs`)
     ),
@@ -34,15 +34,15 @@ export const getGeneratorOptions = (
 
 export const prefillOptions = <K extends AssetType, T, O = { [key in K]: T }>(
     keys: K[],
-    userOptions: { [key in K]?: T },
+    userOptions: { [key in K]?: T } = {},
     getDefault: (type: K) => T
-) =>
+  ) =>
     keys.reduce(
-        (cur = {}, type: K) => ({
-            ...cur,
-            [type]: mergeOptions(userOptions[type], getDefault(type))
-        }),
-        {}
+      (cur = {}, type: K) => ({
+        ...cur,
+        [type]: mergeOptions(userOptions[type], getDefault(type))
+      }),
+      {}
     ) as O
 
 export const mergeOptions = <T>(input: T, defaultVal: T) => {
