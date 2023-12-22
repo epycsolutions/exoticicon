@@ -35,9 +35,9 @@ const cli = async () => {
 }
 
 const printList = (available: { [key: string]: string }, defaults: string[]) =>
-    ` (default: ${ defaults.join(', ') }, available: ${ Object.values(
+    ` (default: ${ defaults.join(', ') } | available: ${ Object.values(
         available
-    ).join(', ') })`;
+    ).join(', ') })`
 
 const printDefaultValue = (value: any) => {
     let printVal = String(value)
@@ -64,7 +64,7 @@ const config = () => {
             `custom config path: (default: ${ printConfigPaths() })`
         )
 
-        .option('-o', '--output <value>', 'specify output directory')
+        .option('-o, --output <value>', 'specify output directory')
 
         .option(
             '-n, -name <value>',
@@ -79,7 +79,7 @@ const config = () => {
         )
         .option(
             '-h, --asset-types <value...>',
-            `specify other asset types to generate`,
+            `specify other asset types to generate` +
             printList(OtherAssetType, DEFAULT_OPTIONS.assetTypes)
         )
 
