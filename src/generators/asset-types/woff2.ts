@@ -1,15 +1,15 @@
-import ttf2woff2 from 'ttf2woff2'
+import ttf2woff2 from 'ttf2woff2';
 
-import { FontGenerator } from '../../types/generator'
-import { FontAssetType } from '../../types/misc'
+import { FontGenerator } from '../../types/generator';
+import { FontAssetType } from '../../types/misc';
 
 const generator: FontGenerator<Buffer> = {
     dependsOn: FontAssetType.TTF,
 
     generate: async (_options, ttf) => {
-        const font = ttf2woff2(ttf)
-        return Buffer.from(font.buffer)
+        const font = ttf2woff2(ttf);
+        return Buffer.from(font.buffer);
     }
-}
+};
 
-export default generator
+export default generator;

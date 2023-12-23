@@ -20,18 +20,18 @@ export const ASSET_TYPES_WITH_TEMPLATE = [
     OtherAssetType.HTML,
     OtherAssetType.SCSS,
     OtherAssetType.SASS
-]
+];
 
-export const ASSET_TYPES = { ...FontAssetType, ...OtherAssetType }
+export const ASSET_TYPES = { ...FontAssetType, ...OtherAssetType };
 
-export type AssetType = FontAssetType | OtherAssetType
+export type AssetType = FontAssetType | OtherAssetType;
 
 export interface GetIconIdOptions {
-    basename: string
-    relativeDirPath: string
-    absoluteFilePath: string
-    relativeFilePath: string
-    index: number
+    basename: string;
+    relativeDirPath: string;
+    absoluteFilePath: string;
+    relativeFilePath: string;
+    index: number;
 }
 
-export type GetIconIdFn = (options: GetIconIdOptions) => string
+export type GetIconIdFn = (options: GetIconIdOptions) => string;

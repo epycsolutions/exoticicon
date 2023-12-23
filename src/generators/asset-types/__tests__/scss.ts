@@ -54,7 +54,9 @@ describe('`SCSS` asset generator', () => {
     test('renders expected selector block', async () => {
         const sass = await scssGen.generate(mockOptions, Buffer.from(''));
 
-        expect(sass).toContain('b[class^="tf-"]:before, b[class*=" tf-"]:before {');
+        expect(sass).toContain(
+            'b[class^="tf-"]:before, b[class*=" tf-"]:before {'
+        );
         expect(sass).toContain('.tf-my-icon:before {');
     });
 

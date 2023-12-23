@@ -1,19 +1,15 @@
-import { resolve } from 'path'
+import { resolve } from 'path';
 
-import { RunnerOptions } from './types/runner'
-import { FontAssetType, OtherAssetType } from './types/misc'
+import { RunnerOptions } from './types/runner';
+import { FontAssetType, OtherAssetType } from './types/misc';
 
-import { getIconId } from './utils/icon-id'
+import { getIconId } from './utils/icon-id';
 
-export const TEMPLATES_DIR = resolve(__dirname, '../templates')
+export const TEMPLATES_DIR = resolve(__dirname, '../templates');
 
 export const DEFAULT_OPTIONS: Omit<RunnerOptions, 'inputDir' | 'outputDir'> = {
     name: 'icons',
-    fontTypes: [
-        FontAssetType.EOT,
-        FontAssetType.WOFF2,
-        FontAssetType.WOFF
-    ],
+    fontTypes: [FontAssetType.EOT, FontAssetType.WOFF2, FontAssetType.WOFF],
     assetTypes: [
         OtherAssetType.CSS,
         OtherAssetType.HTML,
@@ -35,6 +31,6 @@ export const DEFAULT_OPTIONS: Omit<RunnerOptions, 'inputDir' | 'outputDir'> = {
     prefix: 'icon',
     fontsUrl: undefined,
     getIconId: getIconId
-}
+};
 
-export const DEFAULT_START_CODEPOINT = 0xf101
+export const DEFAULT_START_CODEPOINT = 0xf101;

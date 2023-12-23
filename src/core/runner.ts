@@ -1,55 +1,55 @@
-import { DEFAULT_OPTIONS } from '../constants'
+import { DEFAULT_OPTIONS } from '../constants';
 
-import { RunnerOptions } from '../types/runner'
+import { RunnerOptions } from '../types/runner';
 
-import { getGeneratorOptions } from '../generators/generator-options'
-import { GeneratedAssets } from '../generators/generate-assets'
-import { generateAssets } from '../generators'
+import { getGeneratorOptions } from '../generators/generator-options';
+import { GeneratedAssets } from '../generators/generate-assets';
+import { generateAssets } from '../generators';
 
-import { parseConfig } from './config-parser'
+import { parseConfig } from './config-parser';
 
-import { CodepointsMap } from '../utils/codepoints'
+import { CodepointsMap } from '../utils/codepoints';
 import {
     loadAssets,
     writeAssets,
     AssetsMap,
     WriteResults
-} from '../utils/assets'
+} from '../utils/assets';
 
 export interface RunnerResults {
-    options: RunnerOptions
-    writeResults: WriteResults
-    assetsIn: AssetsMap
-    assetsOut: GeneratedAssets
-    codepoints: CodepointsMap
+    options: RunnerOptions;
+    writeResults: WriteResults;
+    assetsIn: AssetsMap;
+    assetsOut: GeneratedAssets;
+    codepoints: CodepointsMap;
 }
 
 export const sanitiseOptions = (userOptions: any) =>
     parseConfig({
         ...DEFAULT_OPTIONS,
         ...userOptions
-    })
+    });
 
 export const generateFonts = async (
     userOptions: RunnerOptions,
     mustWrite = false
 ): Promise<RunnerResults> => {
-    const options = await sanitiseOptions(userOptions)
-    const { outputDir, inputDir } = options
+    const options = await sanitiseOptions(userOptions);
+    const { outputDir, inputDir } = options;
 
-    if(!inputDir) {
-        throw new Error('You must specify an input directory')
+    if (!inputDir) {
+        throw new Error('You must specify an input directory');
     }
 
-    if(mustWrite && !outputDir) {
-        throw new Error('You must specify an output directory')
+    if (mustWrite && !outputDir) {
+        throw new Error('You must specify an output directory');
     }
 
-    const assetsIn = await loadAssets(options)
-    const generatorOptions = getGeneratorOptions(options, assetsIn)
-    const assetsOut = await generateAssets(generatorOptions)
-    const writeResults = outputDir ? await writeAssets(assetsOut, options) : []
-    const { codepoints } = generatorOptions
+    const assetsIn = await loadAssets(options);
+    const generatorOptions = getGeneratorOptions(options, assetsIn);
+    const assetsOut = await generateAssets(generatorOptions);
+    const writeResults = outputDir ? await writeAssets(assetsOut, options) : [];
+    const { codepoints } = generatorOptions;
 
     return {
         options,
@@ -57,5 +57,5 @@ export const generateFonts = async (
         assetsOut,
         writeResults,
         codepoints
-    }
-}
+    };
+};

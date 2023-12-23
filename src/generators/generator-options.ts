@@ -1,17 +1,17 @@
-import { join } from 'path'
+import { join } from 'path';
 
-import { DEFAULT_OPTIONS, TEMPLATES_DIR } from '../constants'
-import { RunnerOptions } from '../types/runner'
-import { FormatOptions } from '../types/format'
-import { getCodepoints } from '../utils/codepoints'
+import { DEFAULT_OPTIONS, TEMPLATES_DIR } from '../constants';
+import { RunnerOptions } from '../types/runner';
+import { FormatOptions } from '../types/format';
+import { getCodepoints } from '../utils/codepoints';
 import {
     AssetType,
     OtherAssetType,
     ASSET_TYPES,
     ASSET_TYPES_WITH_TEMPLATE
-} from '../types/misc'
-import { AssetsMap } from '../utils/assets'
-import { FontGeneratorOptions } from '../types/generator'
+} from '../types/misc';
+import { AssetsMap } from '../utils/assets';
+import { FontGeneratorOptions } from '../types/generator';
 
 export const getGeneratorOptions = (
     options: RunnerOptions,
@@ -22,33 +22,33 @@ export const getGeneratorOptions = (
     formatOptions: prefillOptions<AssetType, {}, FormatOptions>(
         Object.values(ASSET_TYPES),
         options.formatOptions,
-        (assetType) => DEFAULT_OPTIONS.formatOptions[assetType] || {}
+        assetType => DEFAULT_OPTIONS.formatOptions[assetType] || {}
     ),
     templates: prefillOptions<OtherAssetType, string>(
         ASSET_TYPES_WITH_TEMPLATE,
         options.templates,
-        (assetType) => join(TEMPLATES_DIR, `${ assetType }.hbs`)
+        assetType => join(TEMPLATES_DIR, `${assetType}.hbs`)
     ),
     assets
-})
+});
 
 export const prefillOptions = <K extends AssetType, T, O = { [key in K]: T }>(
     keys: K[],
     userOptions: { [key in K]?: T } = {},
     getDefault: (type: K) => T
-  ) =>
+) =>
     keys.reduce(
-      (cur = {}, type: K) => ({
-        ...cur,
-        [type]: mergeOptions(userOptions[type], getDefault(type))
-      }),
-      {}
-    ) as O
+        (cur = {}, type: K) => ({
+            ...cur,
+            [type]: mergeOptions(userOptions[type], getDefault(type))
+        }),
+        {}
+    ) as O;
 
 export const mergeOptions = <T>(input: T, defaultVal: T) => {
-    if(typeof defaultVal === 'object') {
-        return { ...defaultVal, ...input }
+    if (typeof defaultVal === 'object') {
+        return { ...defaultVal, ...input };
     }
 
-    return input || defaultVal
-}
+    return input || defaultVal;
+};

@@ -6,7 +6,7 @@ const mockGlobs = {
         '/project/valid/sub/sub/nested.svg'
     ],
     './empty/**/*.svg': []
-}
+};
 
 module.exports = (
     glob: string,
@@ -14,12 +14,12 @@ module.exports = (
     callback: (err: Error | null, paths: string[] | null) => void
 ) => {
     setTimeout(() => {
-        const paths = mockGlobs[glob]
+        const paths = mockGlobs[glob];
 
-        if(!paths) {
-            return callback(new Error(`Invalid glob: ${ glob }`), null)
+        if (!paths) {
+            return callback(new Error(`Invalid glob: ${glob}`), null);
         }
-        
-        return callback(null, paths)
-    })
-}
+
+        return callback(null, paths);
+    });
+};

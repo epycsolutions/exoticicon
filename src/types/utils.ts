@@ -1,1 +1,1 @@
-export type Arguments<T> = T extends (...args: infer T) => any ? T : never
+export type Arguments<T> = T extends (...args: infer T) => any ? T : never;
